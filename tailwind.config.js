@@ -1,8 +1,8 @@
-/** @type {import('tailwindcss').Config} */
-const defaultTheme = require("tailwindcss/defaultTheme");
+import defaultTheme from 'tailwindcss/defaultTheme';
+import forms from '@tailwindcss/forms';
 
+/** @type {import('tailwindcss').Config} */
 export default {
-    darkMode: "class",
     content: [
         "./resources/**/*.blade.php",
         "./resources/**/*.js",
@@ -10,6 +10,7 @@ export default {
         "./node_modules/flowbite/**/*.js",
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
     ],
+
     theme: {
         extend: {
             colors: {
@@ -49,7 +50,8 @@ export default {
             },
         },
     },
-    plugins: [require("flowbite/plugin"), require("flowbite-typography")],
+
+    plugins: [forms, require('@tailwindcss/forms'), require("flowbite/plugin"), require("flowbite-typography")],
 
     safelist: [
         "bg-red-100",
