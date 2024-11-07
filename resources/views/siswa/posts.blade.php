@@ -153,10 +153,6 @@
 
         <main>
             <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-                {{-- <h3 class="text-xl">Ini adalah halaman Kelas</h3> --}}
-
-                // isi content
-                {{-- <x-slot:title>{{ $title }}</x-slot:title> --}}
 
                 <div class="py-4 px-4 mx-auto max-w-screen-xl lg:px-6">
                     <div class="mx-auto max-w-screen-md sm:text-center">
