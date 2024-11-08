@@ -3,7 +3,8 @@
         <div class="flex h-16 items-center justify-between">
             <div class="flex items-center">
                 <div class="flex-shrink-0">
-                    <img class="h-8 w-8" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
+                    <img class="h-9 w-8"
+                        src="https://1.bp.blogspot.com/-iPhCDfL8S_c/XohGexgk4jI/AAAAAAAAGaA/F7CsvkxOFRs0naEn_fl9ZNNQ_vaV_TZDgCLcBGAsYHQ/s1600/LOGO%2BUSMJAYA.png"
                         alt="Your Company">
                 </div>
                 <div class="hidden md:block">
@@ -40,12 +41,29 @@
                             role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button"
                             tabindex="-1">
                             <!-- Active: "bg-gray-100", Not Active: "" -->
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem"
+                            {{-- <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem"
                                 tabindex="-1" id="user-menu-item-0">Your Profile</a>
                             <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem"
-                                tabindex="-1" id="user-menu-item-1">Settings</a>
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem"
-                                tabindex="-1" id="user-menu-item-2">Sign out</a>
+                                tabindex="-1" id="user-menu-item-1">Settings</a> --}}
+                            {{-- <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem"
+                                tabindex="-1" id="user-menu-item-2">Sign out</a> --}}
+                                <x-responsive-nav-link :href="route('profile.edit')">
+                                    {{ __('Profile') }}
+                                </x-responsive-nav-link>
+
+                            <a>
+                                {{-- btn logout dari layout/navigation --}}
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <a href="route('logout')"
+                                        onclick="event.preventDefault();
+                                            this.closest('form').submit();"
+                                        class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
+                                        id="user-menu-item-2">
+                                        {{ __('Log Out') }}
+                                    </a>
+                                </form>
+                            </a>
                         </div>
                     </div>
                 </div>
