@@ -28,20 +28,16 @@ Route::middleware('auth')->group(function () {
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('admin/dashboard', [HomeController::class, 'index'])->name('admin.dashboard');
 
-    Route::get('admin/posts', function () {
-        return view('admin/posts', ['title' => 'Blog', 'posts' => Post::filter(request(['search', 'category', 'author']))->latest()->paginate(9)->withQueryString()]);
+    Route::get('admin/addguru', function () {
+        return view('admin/addguru', ['title' => 'Edit User Guru']);
     });
     
-    Route::get('admin/posts/{post:slug}', function (Post $post) {
-        return view('admin/post', ['title' => 'Single Post', 'post' => $post]);
+    Route::get('admin/addsiswa', function () {
+        return view('admin/addsiswa', ['title' => 'Edit User Siswa']);
     });
     
     Route::get('admin/about', function () {
-        return view('admin/about', ['name' => 'Arya Dwi Setiawan', 'title' => 'About']);
-    });
-    
-    Route::get('admin/contact', function () {
-        return view('admin/contact', ['title' => 'Contact']);
+        return view('admin/about', ['title' => 'About']);
     });
 });
 
