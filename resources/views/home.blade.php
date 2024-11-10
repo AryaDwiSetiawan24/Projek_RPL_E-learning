@@ -1,110 +1,85 @@
 <!DOCTYPE html>
-<html lang="en" class="h-full bg-gray-100">
+<html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    @vite(['resources/css/app.css','resources/js/app.js'])
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <title>{{ $title }}</title>
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        .container {
-            max-width:max-content;
-            margin: auto;
-            background-color: white;
-            border-radius: 12px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 2rem;
-        }
-        .header {
-            background-color: #2b3d51;
-            color: white;
-            padding: 1rem 2rem;
-            display: flex;
-            align-items: center;
-        }
-        .header img {
-            height: 50px;
-            margin-right: 1rem;
-        }
-        .header-title {
-            font-weight: bold;
-            font-size: 1.5rem;
-        }
-        .content-section {
-            width: 60%;
-        }
-        .content-title {
-            font-weight: bold;
-            font-size: 2rem;
-            color: #333;
-            margin-bottom: 1.5rem;
-        }
-        .login-button {
-            display: inline-block;
-            padding: 0.75rem 1.5rem;
-            background-color: #2b3d51;
-            color: white;
-            font-weight: bold;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            text-align: center;
-            font-size: 1rem;
-            transition: background-color 0.3s ease;
-            text-decoration: none;
-        }
-        .login-button:hover {
-            background-color: #1f2c3b;
-        }
-        .illustration {
-            width: 35%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .illustration img {
-            max-width: 100%;
-            border-radius: 8px;
-        }
-    </style>
+    <title>SMK 1 NAGABONAR</title>
 </head>
-<body class="h-full bg-gray-100">
-    <div class="min-h-full">
+
+{{-- <body class="h-screen overflow-hidden bg-gray-10 font-sans">
+    <div class="min-h-full h-full">
         <!-- Header -->
-        <div class="header">
-            <img src="https://1.bp.blogspot.com/-iPhCDfL8S_c/XohGexgk4jI/AAAAAAAAGaA/F7CsvkxOFRs0naEn_fl9ZNNQ_vaV_TZDgCLcBGAsYHQ/s1600/LOGO%2BUSMJAYA.png" alt="Logo">
-            <div class="header-title">SMK 1 NAGABONAR</div>
+        <div class="header flex items-center bg-gray-800 text-white py-4 px-6 md:px-8">
+            <img src="{{ url('naga-putih.png') }}" alt="Logo" class="h-12 mr-4">
+            <div class="font-bold text-lg md:text-xl">SMK 1 NAGABONAR</div>
         </div>
 
         <!-- Main Content -->
-        <div class="container mt-8">
+        <div
+            class="container max-w-full lg:max-w-5xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden flex flex-col md:flex-row items-center justify-between p-4 md:p-6 lg:p-8 mt-4 md:mt-8 h-[85vh] md:h-[80vh]">
             <!-- Content Section -->
-            <div class="content-section">
-                <div class="content-title">Selamat Datang di E-Learning SMK 1 NAGABONAR</div>
-                <a href="{{ route('logout') }}" 
-                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();" 
-                    class="login-button">
+            <div class="content-section w-full md:w-3/5 text-center md:text-left mb-4 md:mb-0 overflow-y-auto">
+                <div class="content-title font-bold text-lg md:text-2xl text-gray-800 mb-4 md:mb-6">
+                    Selamat Datang di E-Learning SMK 1 NAGABONAR
+                </div>
+                <a href="{{ route('logout') }}"
+                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                    class="login-button inline-block py-2 md:py-3 px-4 md:px-6 bg-gray-800 text-white font-bold rounded-md transition-colors duration-300 hover:bg-gray-700 text-center">
                     Login
                 </a>
                 <form id="logout-form" method="POST" action="{{ route('logout') }}" style="display: none;">
                     @csrf
                 </form>
             </div>
-            
+
             <!-- Illustration -->
-            <div class="illustration">
-                <img src="https://via.placeholder.com/300" alt="Illustration">
+            <div class="illustration w-full md:w-2/5 flex items-center justify-center max-h-full">
+                <img src="{{ url('naga.png') }}" alt="Illustration"
+                    class="max-h-60 md:max-h-full rounded-lg object-contain">
+            </div>
+        </div>
+    </div>
+</body> --}}
+
+<body class="h-screen overflow-hidden bg-gray-10 font-sans" style="background-image: url('{{ url('bg.jpg') }}'); background-size: cover; background-position: center;">
+    <div class="min-h-full h-full bg-gray-800 bg-opacity-50">
+        <!-- Header -->
+        <div class="header flex items-center bg-gray-800 text-white py-4 px-6 md:px-8">
+            <img src="{{ url('naga-putih.png') }}" alt="Logo" class="h-12 mr-4">
+            <div class="font-bold text-lg md:text-xl">SMK 1 NAGABONAR</div>
+        </div>
+
+        <!-- Main Content -->
+        <div
+            class="container max-w-full lg:max-w-5xl mx-auto bg-black bg-opacity-40 rounded-lg shadow-lg overflow-hidden flex flex-col md:flex-row items-center justify-between p-4 md:p-6 lg:p-8 mt-4 md:mt-8 h-[5vh] md:h-[80vh]">
+            <!-- Content Section -->
+            <div class="content-section w-full md:w-3/5 text-center md:text-left mb-4 md:mb-0 overflow-y-auto">
+                <div class="content-title font-bold text-lg md:text-2xl text-white mb-4 md:mb-6">
+                    Selamat Datang di E-Learning SMK 1 NAGABONAR
+                </div>
+                <a href="{{ route('logout') }}"
+                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                    class="login-button inline-block py-2 md:py-3 px-4 md:px-6 bg-gray-700 text-white font-bold rounded-md transition-colors duration-300 hover:bg-gray-800 text-center">
+                    Login
+                </a>
+                <form id="logout-form" method="POST" action="{{ route('logout') }}" style="display: none;">
+                    @csrf
+                </form>
+            </div>
+
+            <!-- Illustration -->
+            <div class="illustration w-full md:w-2/5 flex items-center justify-center max-h-full">
+                <img src="{{ url('naga-putih.png') }}" alt="Illustration"
+                    class="max-h-60 md:max-h-full rounded-lg object-contain">
             </div>
         </div>
     </div>
 </body>
+
+
 </html>
