@@ -23,7 +23,6 @@ class AppServiceProvider extends ServiceProvider
         // mengubah konfigurasi layout blade
         Blade::component(
             'components/layout',
-            // 'guru/components/layout',
             // 'layout',
         );
     }
