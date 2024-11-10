@@ -19,10 +19,26 @@ class RoleMiddleware
     //     return $next($request);
     // }
 
-    public function handle($request, Closure $next, $role)
+    // public function handle($request, Closure $next, $role)
+    // {
+    //     if (!Auth::check() || Auth::user()->role != $role) {
+    //         return redirect('/login');
+    //     }
+
+    //     return $next($request);
+    // }
+
+    public function handle(Request $request, Closure $next)
     {
-        if (!Auth::check() || Auth::user()->role != $role) {
-            return redirect('/login');
+        $user = Auth::user();
+
+        // Periksa usertype dan arahkan ke dashboard sesuai role
+        if ($user->usertype == 'admin') {
+            return redirect()->route('admin.dashboard');
+        } elseif ($user->usertype == 'guru') {
+            return redirect()->route('guru.dashboard');
+        } elseif ($user->usertype == 'siswa') {
+            return redirect()->route('siswa.dashboard');
         }
 
         return $next($request);
