@@ -32,5 +32,15 @@ class DatabaseSeeder extends Seeder
             Category::all(),
             User::all()
         ])->create();
+
+        // $comp= User::all()->except($vend->id->random());
+
+        // Post::create([
+        //     'title' => 'Bahasa Inggris',
+        //     'author_id' => User::factory(),
+        //     'category_id' => Category::factory(),
+        //     'slug' => 'bahasa-inggris',
+        //     'body' => fake()->text()
+        // ]);
     }
 }
