@@ -26,8 +26,8 @@
                         <div class="hidden md:block">
                             <div class="ml-10 flex items-baseline space-x-4">
                                 <x-nav-link href="/admin/dashboard" :active="request()->is('/admin/dashboard')">Dashboard</x-nav-link>
-                                <x-nav-link href="/admin/addguru" :active="request()->is('/admin/addguru')">Guru</x-nav-link>
-                                <x-nav-link href="/admin/addsiswa" :active="request()->is('/admin/addsiswa')">Siswa</x-nav-link>
+                                <x-nav-link href="/admin/showguru" :active="request()->is('/admin/showguru')">Guru</x-nav-link>
+                                <x-nav-link href="/admin/showsiswa" :active="request()->is('/admin/showsiswa')">Siswa</x-nav-link>
                                 <x-nav-link href="/admin/about" :active="request()->is('/admin/about')">About</x-nav-link>
                             </div>
                         </div>
@@ -105,9 +105,9 @@
             <div x-show="isOpen" class="md:hidden" id="mobile-menu">
                 <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
                     <x-nav-link href="/admin/dashboard" :active="request()->is('/admin/dashboard')">Dashboard</x-nav-link>
-                    <x-nav-link href="/admin/addguru" :active="request()->is('/admin/addguru')">Guru</x-nav-link>
-                    <x-nav-link href="/admin/addsiswa" :active="request()->is('/admin/addsiswa')">Siswa</x-nav-link>
-                    <x-nav-link href="/admin/about" :active="request()->is('/admin/addsiswa')">About</x-nav-link>
+                    <x-nav-link href="/admin/showguru" :active="request()->is('/admin/showguru')">Guru</x-nav-link>
+                    <x-nav-link href="/admin/showsiswa" :active="request()->is('/admin/showsiswa')">Siswa</x-nav-link>
+                    <x-nav-link href="/admin/about" :active="request()->is('/admin/about')">About</x-nav-link>
                 </div>
                 <div class="border-t border-gray-700 pb-3 pt-4">
                     <div class="flex items-center px-5">
