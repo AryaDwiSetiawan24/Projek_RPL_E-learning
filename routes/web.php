@@ -45,6 +45,7 @@ Route::middleware(['auth', 'guru'])->group(function () {
     Route::get('guru/posts', [GuruController::class, 'kelas'])->name('guru.kelas');
     Route::get('guru/posts/{post:slug}', [GuruController::class, 'single'])->name('guru.single');
     Route::get('guru/diskusi', [GuruController::class, 'diskusi'])->name('guru.diskusi');
+    Route::post('guru/diskusi/store', [GuruController::class, 'storeDiskusi'])->name('guru.diskusi.store');
     Route::get('guru/contact', [GuruController::class, 'contact'])->name('guru.contact');
 });
 
