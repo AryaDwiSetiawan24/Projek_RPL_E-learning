@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -22,10 +23,13 @@ class User extends Authenticatable
         'email',
         'password',
         'username',
+        // 'author', // tambah category
         'email_verified_at',
         'usertype',
         'remember_token',
     ];
+
+    // protected $with = ['author', 'category']; // tambah category
 
     /**
      * The attributes that should be hidden for serialization.
@@ -48,6 +52,12 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    // menambah relasi tabel category
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo(Category::class);
     }
 
     public function posts(): HasMany

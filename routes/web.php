@@ -5,6 +5,7 @@ use App\Http\Controllers\GuruController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\MaterialController;
 
 Route::get('/', function () {
     return view('home');
@@ -47,6 +48,12 @@ Route::middleware(['auth', 'guru'])->group(function () {
     Route::get('guru/diskusi', [GuruController::class, 'diskusi'])->name('guru.diskusi');
     Route::post('guru/diskusi/store', [GuruController::class, 'storeDiskusi'])->name('guru.diskusi.store');
     Route::get('guru/contact', [GuruController::class, 'contact'])->name('guru.contact');
+    // route materi
+    Route::resource('guru', GuruController::class);
+    Route::resource('materials', MaterialController::class);
+    Route::get('materials/{material}/view', [MaterialController::class, 'show'])->name('materials.show');
+    Route::get('guru/materials/{material}/edit', [MaterialController::class, 'editMaterial'])->name('materials.edit');
+    Route::put('guru/materials/{material}', [MaterialController::class, 'updateMaterial'])->name('materials.update');
 });
 
 // Route Siswa
@@ -55,7 +62,10 @@ Route::middleware(['auth', 'siswa'])->group(function () {
     Route::get('siswa/posts', [SiswaController::class, 'kelas'])->name('siswa.kelas');
     Route::get('siswa/posts/{post:slug}', [SiswaController::class, 'single'])->name('siswa.single');
     Route::get('siswa/diskusi', [SiswaController::class, 'diskusi'])->name('siswa.diskusi');
+    Route::post('siswa/diskusi/store', [SiswaController::class, 'storeDiskusi'])->name('siswa.diskusi.store');
     Route::get('siswa/contact', [SiswaController::class, 'contact'])->name('siswa.contact');
+    // route materi
+    Route::get('materials/{material}/view', [MaterialController::class, 'show'])->name('materials.show');
 });
 
 require __DIR__ . '/auth.php';
