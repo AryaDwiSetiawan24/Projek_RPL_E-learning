@@ -38,8 +38,6 @@
                     <a href="{{ route('guru.create') }}"><button type="button"
                             class="inline-flex items-center rounded-md bg-gray-800 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">Unggah
                             Materi</button></a>
-                            @forelse ($materials as $material)
-
                     <table class="table">
                         <thead>
                             <tr>
@@ -50,7 +48,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {{-- @forelse ($materials as $material) --}}
+                            @forelse ($materials as $material)
                                 <tr>
                                     <td>{{ $material->title }}</td>
                                     <td>{{ $material->description }}</td>
@@ -67,18 +65,18 @@
                                         </div>
                                     </td>
                                 </tr>
+                            @empty
                                 <tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        @empty
-                            <div>
-                                <p class="text-center font-semibold text-m my-4">Belum ada materi!</p>
-                            </div>
-                        </tr>
-                        @endforelse
-                </article>
-            </div>
-        </main>
+                                    <td class="px-4 py-4 text-center" colspan="5">
+                                        Belum ada materi!
+                                    </td>
+                                </tr>
+                            @endforelse
+                        </tbody>
+                    </table>
+                </div>
+            </article>
+        </div>
+    </main>
 
-    </x-guru-layout>
+</x-guru-layout>
