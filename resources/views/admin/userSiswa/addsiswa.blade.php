@@ -2,7 +2,6 @@
     <x-slot:title>{{ $title}}</x-slot:title>
 
     <div class="max-w-2xl mx-auto bg-white p-6 rounded shadow">
-        {{-- <h2 class="text-2xl font-bold mb-6">{{ $title }}</h2> --}}
     
         @if (session('success'))
             <div class="bg-green-100 text-green-700 p-4 mb-4 rounded">
@@ -35,7 +34,7 @@
                        placeholder="Masukkan email" value="{{ old('email') }}" required>
             </div>
     
-            <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
+            <button type="submit" class="bg-gray-800 text-white py-2 px-4 rounded hover:bg-indigo-700">
                 Tambah Siswa
             </button>
         </form>

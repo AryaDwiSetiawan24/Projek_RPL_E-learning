@@ -19,16 +19,16 @@
                 <div class="flex h-16 items-center justify-between">
                     <div class="flex items-center">
                         <div class="flex-shrink-0">
-                            <img class="h-9 w-8"
-                                src="https://1.bp.blogspot.com/-iPhCDfL8S_c/XohGexgk4jI/AAAAAAAAGaA/F7CsvkxOFRs0naEn_fl9ZNNQ_vaV_TZDgCLcBGAsYHQ/s1600/LOGO%2BUSMJAYA.png"
+                            <img class="h-11 w-9"
+                                src="{{ url('naga-putih.png') }}"
                                 alt="Your Company">
                         </div>
                         <div class="hidden md:block">
                             <div class="ml-10 flex items-baseline space-x-4">
-                                <x-nav-link href="/guru/dashboard" :active="request()->is('/guru/dashboard')">Dashboard</x-nav-link>
-                                <x-nav-link href="/guru/posts" :active="request()->is('/guru/posts')">Kelas</x-nav-link>
-                                <x-nav-link href="/guru/diskusi" :active="request()->is('/guru/diskusi')">Diskusi</x-nav-link>
-                                <x-nav-link href="/guru/contact" :active="request()->is('/guru/contact')">Kontak</x-nav-link>
+                                <x-nav-link href="/guru/dashboard" :active="request()->is('guru/dashboard')">Dashboard</x-nav-link>
+                                <x-nav-link href="/guru/posts" :active="request()->is('guru/posts')">Kelas</x-nav-link>
+                                <x-nav-link href="/guru/diskusi" :active="request()->is('guru/diskusi')">Diskusi</x-nav-link>
+                                <x-nav-link href="/guru/contact" :active="request()->is('guru/contact')">Kontak</x-nav-link>
                             </div>
                         </div>
                     </div>
@@ -54,26 +54,30 @@
                                     x-transition:leave="transition ease-in duration-75 transform"
                                     x-transition:leave-start="opacity-100 scale-100"
                                     x-transition:leave-end="opacity-0 scale-95"
-                                    class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                                    class="absolute right-0 z-10 mt-2 w-60 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
                                     role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button"
                                     tabindex="-1">
+
+                                    <div class="block w-full ps-3 pe-4 py-2 font-medium text-base text-gray-900">
+                                        {{ Auth::user()->name }}</div>
+                                    <div class="block w-full ps-3 pe-4 py-2 font-medium text-sm text-gray-500">
+                                        {{ Auth::user()->usertype }}</div>
+                                    <hr>
                                     <x-responsive-nav-link :href="route('profile.edit')">
                                         {{ __('Profile') }}
                                     </x-responsive-nav-link>
 
-                                    <a>
-                                        {{-- btn logout dari layout/navigation --}}
-                                        <form method="POST" action="{{ route('logout') }}">
-                                            @csrf
-                                            <a href="route('logout')"
-                                                onclick="event.preventDefault();
+                                    {{-- btn logout dari layout/navigation --}}
+                                    <form method="POST" action="{{ route('logout') }}">
+                                        @csrf
+                                        <x-responsive-nav-link href="route('logout')"
+                                            onclick="event.preventDefault();
                                                     this.closest('form').submit();"
-                                                class="block px-4 py-2 text-sm text-gray-700" role="menuitem"
-                                                tabindex="-1" id="user-menu-item-2">
-                                                {{ __('Log Out') }}
-                                            </a>
-                                        </form>
-                                    </a>
+                                            class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
+                                            id="user-menu-item-2">
+                                            {{ __('Log Out') }}
+                                        </x-responsive-nav-link>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -104,10 +108,10 @@
             <!-- Mobile menu, show/hide based on menu state. -->
             <div x-show="isOpen" class="md:hidden" id="mobile-menu">
                 <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
-                    <x-nav-link href="/guru/dashboard" :active="request()->is('/guru/dashboard')">Dashboard</x-nav-link>
-                    <x-nav-link href="/guru/posts" :active="request()->is('/guru/posts')">Kelas</x-nav-link>
-                    <x-nav-link href="/guru/diskusi" :active="request()->is('/guru/diskusi')">Diskusi</x-nav-link>
-                    <x-nav-link href="/guru/contact" :active="request()->is('/guru/contact')">Contact</x-nav-link>
+                    <x-nav-link href="/guru/dashboard" :active="request()->is('guru/dashboard')">Dashboard</x-nav-link>
+                    <x-nav-link href="/guru/posts" :active="request()->is('guru/posts')">Kelas</x-nav-link>
+                    <x-nav-link href="/guru/diskusi" :active="request()->is('guru/diskusi')">Diskusi</x-nav-link>
+                    <x-nav-link href="/guru/contact" :active="request()->is('guru/contact')">Contact</x-nav-link>
                 </div>
                 <div class="border-t border-gray-700 pb-3 pt-4">
                     <div class="flex items-center px-5">

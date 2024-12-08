@@ -1,6 +1,6 @@
 <x-admin-layout>
     <x-slot:title>{{ $title }}</x-slot:title>
-    <button class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
+    <button class="bg-gray-800 text-white py-2 px-4 rounded hover:bg-indigo-700">
         <a href="/admin/guru/add">
             Tambah Guru
         </a>

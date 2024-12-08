@@ -15,10 +15,10 @@ class AdminController extends Controller
     }
 
     // Fitur show Guru
-    public function showguru(Request $request)
+    public function showguru()
     {
         $users = User::where('usertype', 'guru')
-            ->orderBy('id', 'desc')
+            ->orderBy('id', 'asc')
             ->get();
 
         $total = User::where('usertype', 'guru')->count();
@@ -104,10 +104,10 @@ class AdminController extends Controller
     }
 
     // Fitur add Siswa
-    public function showsiswa(Request $request)
+    public function showsiswa()
     {
         $users = User::where('usertype', 'siswa')
-            ->orderBy('id', 'desc')
+            ->orderBy('id', 'asc')
             ->get();
 
         $total = User::where('usertype', 'siswa')->count();

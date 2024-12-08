@@ -2,12 +2,10 @@
     <x-slot:title>{{ $title }}</x-slot:title>
 
     <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-
-
         <div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
             <!-- Konten Utama -->
             <div class="bg-white p-6 rounded-lg shadow">
-                <h3 class="text-xl font-semibold">Ini adalah halaman Home Page</h3>
+                <h3 class="text-xl font-semibold">Ini adalah halaman Dashboard</h3>
                 <p class="mt-2 text-gray-600">Selamat datang {{ Auth::user()->name }}.</p>
             </div>
 

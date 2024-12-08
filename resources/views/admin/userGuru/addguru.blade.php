@@ -35,7 +35,7 @@
                        placeholder="Masukkan email" value="{{ old('email') }}" required>
             </div>
     
-            <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
+            <button type="submit" class="bg-gray-800 text-white py-2 px-4 rounded hover:bg-indigo-700">
                 Tambah Guru
             </button>
         </form>
