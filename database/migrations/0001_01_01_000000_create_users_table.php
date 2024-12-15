@@ -17,6 +17,10 @@ return new class extends Migration
             $table->string('username')->unique();
             $table->string('email')->unique();
             $table->string('usertype')->default('siswa');
+            $table->foreignId('category_id')->nullable()->constrained( // untuk memfilter kelas di setiap user (siswa), kelas=category
+                table: 'categories',
+                indexName: 'user_category_id'
+            );
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

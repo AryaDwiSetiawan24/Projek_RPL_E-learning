@@ -1,15 +1,12 @@
-{{-- <x-guru-layout>
-    <x-slot:title>{{ $title }}</x-slot:title>
-    <h3 class="text-xl">Halaman Diskusi!</h3>
-</x-guru-layout> --}}
-
 <x-guru-layout>
     <x-slot:title>{{ $title }}</x-slot:title>
+
     @if (session('success'))
         <div class="bg-green-100 text-green-700 p-4 rounded mb-4">
             {{ session('success') }}
         </div>
     @endif
+    
     <div class="container mx-auto px-4 py-6">
         <h3 class="text-xl font-bold mb-4">Halaman Diskusi</h3>
 
@@ -22,7 +19,7 @@
                     <div class="mt-4 text-sm text-gray-500">
                         Ditambahkan oleh:
                         <span class="font-medium">{{ $diskusi->user->name ?? 'Anonim' }}</span>
-                        pada <span class="italic">{{ $diskusi->created_at->format('d M Y, H:i') }}</span>
+                        dari <span class="italic">{{ $diskusi->created_at->diffForHumans() }}</span>
                     </div>
                 </div>
             @empty
@@ -32,9 +29,9 @@
 
         <!-- Form Tambah Komentar -->
         <div class="mt-8 p-4 bg-gray-100 shadow rounded-lg">
+            {{-- buat tampilan  dan fungsi pada controller dan atur pada rute --}}
+            <form method="POST" action="{{ route('guru.diskusi.store') }}">
             <h4 class="text-lg font-bold mb-4">Tambahkan Komentar Baru</h4>
-            <form method="POST" 
-            action="{{ route('guru.diskusi.store') }}"> {{-- buat tampilan  dan fungsi pada controller dan atur pada rute --}}
                 @csrf
                 <div class="mb-4">
                     <label for="topik" class="block text-sm font-medium text-gray-700">Topik</label>
