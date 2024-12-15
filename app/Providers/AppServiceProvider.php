@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -25,5 +26,9 @@ class AppServiceProvider extends ServiceProvider
             'components/layout',
             // 'layout',
         );
+
+        Route::bind('post', function ($value) {
+            return \App\Models\Post::where('slug', $value)->firstOrFail();
+        });
     }
 }

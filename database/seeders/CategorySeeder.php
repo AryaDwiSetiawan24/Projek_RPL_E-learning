@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Category;
+use Illuminate\Support\Str;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
@@ -13,36 +14,24 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
+        // membuat categori 'dumy' (data acak)
         // Category::factory(3)->create();
-        
-        Category::create([
-            'name' => 'Bahasa Inggris',
-            'slug' => 'bahasa-inggris',
-            'color' => 'red'
-        ]);
 
-        Category::create([
-            'name' => 'Agama',
-            'slug' => 'agama',
-            'color' => 'green'
-        ]);
+        // membuat category kelas x,xi,xii
+        $categories = [
+            ['name' => 'Kelas X', 'color' => 'blue'],
+            ['name' => 'Kelas XI', 'color' => 'yellow'],
+            ['name' => 'Kelas XII', 'color' => 'red'],
+        ];
 
-        Category::create([
-            'name' => 'Fisika',
-            'slug' => 'fisika',
-            'color' => 'blue'
-        ]);
-
-        Category::create([
-            'name' => 'Kimia',
-            'slug' => 'kimia',
-            'color' => 'yellow'
-        ]);
-
-        Category::create([
-            'name' => 'Teknologi Informaasi',
-            'slug' => 'teknologi-informasi',
-            'color' => 'purple'
-        ]);
+        foreach ($categories as $category) {
+            Category::firstOrCreate(
+                ['slug' => Str::slug($category['name'])],
+                [
+                    'name' => $category['name'],
+                    'color' => $category['color'],
+                ]
+            );
+        }
     }
 }

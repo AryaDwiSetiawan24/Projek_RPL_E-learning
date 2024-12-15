@@ -4,6 +4,7 @@
     <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
 
         <div class="py-4 px-4 mx-auto max-w-screen-xl lg:px-6">
+
             {{-- Search Bar --}}
             <div class="mx-auto max-w-screen-md sm:text-center">
                 <form>
@@ -13,6 +14,7 @@
                     @if (request('author'))
                         <input type="hidden" name="author" value="{{ request('author') }}">
                     @endif
+
                     <div class="items-center mx-auto mb-3 space-y-4 max-w-screen-sm sm:flex sm:space-y-0">
                         <div class="relative w-full">
                             <label for="search" class="hidden mb-2 text-sm font-medium text-gray-900">Search</label>
@@ -38,14 +40,13 @@
             </div>
         </div>
 
-        {{ $posts->links() }}
-
         <div class=" my-4 py-4 px-4 mx-auto max-w-screen-xl lg:py-4 lg:px-0">
             <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
 
                 @forelse ($posts as $post)
                     <article class="p-6 bg-white rounded-lg border border-gray-200 shadow-md">
                         <div class="flex justify-between items-center mb-5 text-gray-500">
+
                             {{-- Category --}}
                             <a href="/siswa/posts?category={{ $post->category->slug }}">
                                 <span
@@ -53,8 +54,8 @@
                                     {{ $post->category->name }}
                                 </span>
                             </a>
-                            <span class="text-sm">{{ $post->created_at->diffForHumans() }}</span>
                         </div>
+
                         {{-- Posts --}}
                         <a href="/siswa/posts/{{ $post->slug }}">
                             <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 hover:underline">
@@ -62,6 +63,7 @@
                         </a>
                         <p class="mb-5 font-light text-gray-500">{{ Str::limit($post['body'], 150) }}</p>
                         <div class="flex justify-between items-center">
+
                             {{-- Author --}}
                             <a href="/siswa/posts?author={{ $post->author->username }}">
                                 <div class="flex items-center space-x-3">
@@ -73,16 +75,6 @@
                                     </span>
                                 </div>
                             </a>
-                            {{-- <a href="/posts/{{ $post->slug }}"
-                                class="inline-flex items-center font-medium text-sm text-primary-600 hover:underline">
-                                Read more
-                                <svg class="ml-2 w-4 h-4" fill="currentColor" viewBox="0 0 20 20"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                        d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                                        clip-rule="evenodd"></path>
-                                </svg>
-                            </a> --}}
                         </div>
                     </article>
                 @empty
