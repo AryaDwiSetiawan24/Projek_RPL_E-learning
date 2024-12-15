@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Diskusi;
+use App\Models\Material;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -192,8 +194,35 @@ class AdminController extends Controller
         return redirect()->route('admin.showsiswa')->with('success', 'Data siswa berhasil dihapus!');
     }
 
-    public function about()
+    // tampilkan materi dan diskusi
+    public function halamanEdit()
     {
-        return view('admin.about', ['title' => 'Halaman About']);
+        $diskusi = Diskusi::all();
+        $material = Material::all(); 
+
+        return view('admin.edit', [
+            'title' => 'Halaman Edit',
+            'diskusis' => $diskusi,
+            'materials' => $material,
+        ]);
+    }
+
+    // hapus materi
+    public function destroyMaterial($id)
+    {
+        // Cari user berdasarkan ID dan hapus
+        $material = Material::findOrFail($id);
+        $material->delete();
+
+        return redirect()->route('admin.HalamanEdit')->with('success', 'Data Materi berhasil dihapus!');
+    }
+
+    // Hapus diskusi
+    public function destroyDiskusi($id)
+    {
+        $diskusi = Diskusi::findOrFail($id);
+        $diskusi->delete();
+
+        return redirect()->route('admin.HalamanEdit')->with('success', 'Diskusi berhasil dihapus!');
     }
 }

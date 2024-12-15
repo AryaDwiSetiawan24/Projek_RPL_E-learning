@@ -14,7 +14,7 @@
 <body class="h-full">
     <div class="min-h-full">
         {{-- navigasi --}}
-        <nav class="bg-gray-800" x-data="{ isOpen: false }">
+        <nav class="bg-gray-800 fixed top-0 w-full z-50" x-data="{ isOpen: false }">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div class="flex h-16 items-center justify-between">
                     <div class="flex items-center">

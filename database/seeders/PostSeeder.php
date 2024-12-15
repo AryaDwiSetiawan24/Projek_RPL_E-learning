@@ -27,8 +27,8 @@ class PostSeeder extends Seeder
                 'title' => 'Bahasa Inggris',
                 'author_id' => $users->where('email', 'bintang11@gmail.com')->first()->id, 
                 'category_id' => $categories->where('slug', $slug)->first()->id,
-                'slug' => 'bahasa-inggris-'. $slug,
-                'body' => fake()->text(),
+                'slug' => 'inggris-'. $slug,
+                'body' => 'Kita akan fokus pada pengembangan kemampuan berbahasa Inggris secara komprehensif, termasuk kemampuan berbahasa lisan dan tulisan yang fasih.',
             ]);
         }
 
@@ -39,7 +39,7 @@ class PostSeeder extends Seeder
                 'author_id' => $users->where('email', 'guru1@gmail.com')->first()->id,
                 'category_id' => $categories->where('slug', $slug)->first()->id,
                 'slug' => 'matematika-'. $slug,
-                'body' => fake()->text(),
+                'body' => 'Kita akan menjelajahi konsep-konsep matematika yang lebih kompleks, seperti kalkulus, aljabar linear, dan statistika.',
             ]);
         }
 
@@ -50,7 +50,7 @@ class PostSeeder extends Seeder
                 'author_id' => $users->where('email', 'guru2@gmail.com')->first()->id,
                 'category_id' => $categories->where('slug', $slug)->first()->id,
                 'slug' => 'agama-'. $slug,
-                'body' => fake()->text(),
+                'body' => 'Kita akan melakukan kajian mendalam terhadap teks-teks suci, menganalisis berbagai pandangan keagamaan, dan mengembangkan sikap toleransi dan saling menghormati antar umat beragama.',
             ]);
         }
 
@@ -61,7 +61,7 @@ class PostSeeder extends Seeder
                 'author_id' => $users->where('email', 'guru3@gmail.com')->first()->id,
                 'category_id' => $categories->where('slug', $slug)->first()->id,
                 'slug' => 'indonesia-'. $slug,
-                'body' => fake()->text(),
+                'body' => 'Kita akan mempelajari ragam bahasa Indonesia, baik lisan maupun tulisan, serta menggali kekayaan sastra Indonesia.',
             ]);
         }
 
@@ -72,7 +72,18 @@ class PostSeeder extends Seeder
                 'author_id' => $users->where('email', 'guru4@gmail.com')->first()->id,
                 'category_id' => $categories->where('slug', $slug)->first()->id,
                 'slug' => 'prakarya-'. $slug,
-                'body' => fake()->text(),
+                'body' => 'Kelas prakarya dan kewirausahaan ini akan membekali kalian dengan keterampilan yang dibutuhkan untuk menciptakan produk yang inovatif dan bernilai jual.',
+            ]);
+        }
+
+        // Tambahkan mapel Seni
+        foreach ($categoriesSlugs as $slug) {
+            Post::create([
+                'title' => 'Seni Budaya',
+                'author_id' => $users->where('email', 'bintang11@gmail.com')->first()->id,
+                'category_id' => $categories->where('slug', $slug)->first()->id,
+                'slug' => 'seni-'. $slug,
+                'body' => 'Kelas seni ini akan membuka kreativitas tanpa batas. Melalui berbagai teknik dan media seni, akan mengeksplorasi diri dan mengekspresikan ide-ide cemerlang.',
             ]);
         }
     }

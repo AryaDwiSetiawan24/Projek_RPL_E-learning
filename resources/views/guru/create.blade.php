@@ -9,7 +9,7 @@
     @endif
 
     <div class="w-full max-w-3xl mx-auto bg-white shadow-md rounded-lg p-8" style="margin: 0 20%;">
-        <form action="{{ route('guru.store') }}" method="POST" enctype="multipart/form-data" class="space-y-6">
+        <form action="{{ route('materials.store') }}" method="POST" enctype="multipart/form-data" class="space-y-6">
             @csrf
             <div>
                 <label for="post_slug" class="block text-sm font-medium text-gray-700">Pilih Kelas</label>

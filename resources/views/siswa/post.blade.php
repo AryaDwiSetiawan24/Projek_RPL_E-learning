@@ -1,7 +1,7 @@
 <x-siswa-layout>
     <x-slot:title>{{ $title }}</x-slot:title>
 
-    <main class="pt-8 pb-16 lg:pt-16 lg:pb-24 bg-white dark:bg-gray-900 antialiased">
+    <main class="rounded-lg pt-8 pb-16 lg:pt-16 lg:pb-24 bg-white dark:bg-gray-900 antialiased">
         <div class="flex justify-between px-4 mx-auto max-w-screen-xl ">
             <article
                 class="mx-auto w-full max-w-4xl format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
@@ -29,25 +29,29 @@
                         class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white">
                         {{ $post->title }}</h1>
                 </header>
-                <p class="lead">{{ $post->body }}</p>
+                <p>{{ $post->body }}</p>
 
                 {{-- materi --}}
                 <div class="container">
-                    @foreach ($materials as $material)
+                    @forelse ($materials as $material)
                         <div class="card bg-gray-100 shadow-md rounded-lg p-4 mb-4">
                             <h2 class="text-xl font-bold text-gray-800">{{ $material->title }}</h2>
                             <p class="text-sm text-gray-500">
                                 {{ $post->created_at->diffForHumans() }}</p>
                                 <p class="text-sm text-gray-600 mb-2">Pengunggah: {{ $material->uploader->name }}</p>
                             <p class="text-base text-gray-700 mb-4">Deskripsi: {{ $material->description }}</p>
-                            <a href="{{ route('materials.show', $material->id) }}" target="_blank">
+                            <a href="{{ route('siswa.showMaterials', $material->id) }}" target="_blank">
                                 <button type="button"
                                     class="text-sm bg-gray-800 text-white py-2 px-4 rounded-md hover:bg-indigo-700">
                                     Lihat Materi
                                 </button>
                             </a>
                         </div>
-                    @endforeach
+                    @empty
+                    <div class="card border border-gray-200 rounded-lg p-4 mb-4 text-center">
+                        <p class="text-lg text-gray-500">Belum ada materi!!</p>
+                    </div>
+                    @endforelse
                 </div>
 
             </article>

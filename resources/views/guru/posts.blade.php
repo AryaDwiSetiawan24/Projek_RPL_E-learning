@@ -3,7 +3,7 @@
 
     <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
         <div class="mb-4py-4 px- mx-auto max-w-screen-xl lg:py-4 lg:px-0">
-            <button type="button" class="mb-4 ml-4 inline-flex items-center rounded-md bg-gray-800 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"><a href="{{ route('guru.create') }}">Unggah Materi</a></button>
+            <button type="button" class="mb-4 ml-4 inline-flex items-center rounded-md bg-gray-800 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"><a href="{{ route('guru.createMaterial') }}">Unggah Materi</a></button>
 
             {{-- lg:grid-cols-3 untuk ubah tampilan posts --}}
              <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-1">

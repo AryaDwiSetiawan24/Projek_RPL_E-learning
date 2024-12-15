@@ -14,7 +14,7 @@
 <body class="h-full">
     <div class="min-h-full">
         {{-- navigasi --}}
-        <nav class="bg-gray-800" x-data="{ isOpen: false }">
+        <nav class="bg-gray-800 fixed top-0 w-full z-50" x-data="{ isOpen: false }">
             <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
                 <div class="flex h-16 items-center justify-between">
                     <div class="flex items-center">
@@ -26,7 +26,7 @@
                                 <x-nav-link href="/admin/dashboard" :active="request()->is('admin/dashboard')">Dashboard</x-nav-link>
                                 <x-nav-link href="/admin/showguru" :active="request()->is('admin/showguru')">Guru</x-nav-link>
                                 <x-nav-link href="/admin/showsiswa" :active="request()->is('admin/showsiswa')">Siswa</x-nav-link>
-                                <x-nav-link href="/admin/about" :active="request()->is('admin/about')">About</x-nav-link>
+                                <x-nav-link href="/admin/edit" :active="request()->is('admin/edit')">Edit Data</x-nav-link>
                             </div>
                         </div>
                     </div>
@@ -109,7 +109,7 @@
                     <x-nav-link href="/admin/dashboard" :active="request()->is('admin/dashboard')">Dashboard</x-nav-link>
                     <x-nav-link href="/admin/showguru" :active="request()->is('admin/showguru')">Guru</x-nav-link>
                     <x-nav-link href="/admin/showsiswa" :active="request()->is('admin/showsiswa')">Siswa</x-nav-link>
-                    <x-nav-link href="/admin/about" :active="request()->is('admin/about')">About</x-nav-link>
+                    <x-nav-link href="/admin/edit" :active="request()->is('admin/edit')">Edit Data</x-nav-link>
                 </div>
                 <div class="border-t border-gray-700 pb-3 pt-4">
                     <div class="flex items-center px-5">
@@ -149,7 +149,7 @@
         <x-header>{{ $title }}</x-header>
 
         <main>
-            <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+            <div class="mx-auto max-w-7xl pt-6 px-4 pb-6 sm:px-6 lg:px-8">
                 {{ $slot }}
             </div>
         </main>
