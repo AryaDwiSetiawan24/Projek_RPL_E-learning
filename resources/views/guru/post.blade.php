@@ -1,7 +1,7 @@
 <x-guru-layout>
     <x-slot:title>{{ $title }}</x-slot:title>
 
-    <main class="pt-8 pb-16 lg:pt-16 lg:pb-24 bg-white dark:bg-gray-900 antialiased">
+    <main class="rounded-lg pt-8 pb-16 lg:pt-16 lg:pb-24 bg-white dark:bg-gray-900 antialiased">
         <div class="flex justify-between px-4 mx-auto max-w-screen-xl ">
             <article
                 class="mx-auto w-full max-w-4xl format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
@@ -31,11 +31,11 @@
                         {{ $post->title }}</h1>
                 </header>
                 {{-- menampilka body --}}
-                <p class="lead">{{ $post->body }}</p>
+                <p>{{ $post->body }}</p>
 
                 {{-- isi materi --}}
                 <div class="container">
-                    <a href="{{ route('guru.create') }}"><button type="button"
+                    <a href="{{ route('guru.createMaterial') }}"><button type="button"
                             class="inline-flex items-center rounded-md bg-gray-800 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">Unggah
                             Materi</button></a>
                     <table class="table">
@@ -44,22 +44,22 @@
                                 <th>Judul</th>
                                 <th>Deskripsi</th>
                                 <th>Diunggah</th>
-                                <th>Aksi</th>
+                                <th class="text-center">Aksi</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="text-gray-900">
                             @forelse ($materials as $material)
                                 <tr>
                                     <td>{{ $material->title }}</td>
                                     <td>{{ $material->description }}</td>
                                     <td>{{ $material->created_at->diffForHumans() }}</td>
-                                    <td class="px-4 py-2">
-                                        <div class="flex space-x-2" role="group" aria-label="Basic example">
+                                    <td class="px-4 py-2 item-center">
+                                        <div class="flex justify-center space-x-2" role="group" aria-label="Basic example">
                                             <a href="{{ route('materials.edit', $material->id) }}">
                                                 <button type="button"
-                                                    class="inline-flex items-center rounded-md bg-yellow-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-yellow-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-yellow-500">Edit</button>
+                                                    class="inline-flex items-center rounded-md bg-green-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-500">Edit</button>
                                             </a>
-                                            <a href="{{ route('materials.show', $material->id) }}" target="_blank">
+                                            <a href="{{ route('guru.showMaterials', $material->id) }}" target="_blank">
                                                 <button type="button"
                                                     class="inline-flex items-center rounded-md bg-gray-800 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-800">Lihat</button></a>
                                         </div>

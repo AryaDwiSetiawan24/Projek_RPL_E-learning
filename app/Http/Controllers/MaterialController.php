@@ -13,10 +13,40 @@ class MaterialController extends Controller
     // Menampilkan file
     public function show(Material $material)
     {
-        return response()->file(storage_path("app/public/{$material->file_path}"));
+        $filePath = storage_path("app/public/{$material->file_path}");
+
+        if (!file_exists($filePath)) {
+            abort(404, 'File not found.');
+        }
+
+        return response()->file($filePath);
     }
 
-    public function editMaterial($id)
+    // Menyimpan materi ke database
+    public function store(Request $request)
+    {
+        $request->validate([
+            'post_slug' => 'required|exists:posts,slug',
+            'title' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'file' => 'required|mimes:pdf|max:2048', // Hanya file PDF, maksimal 2MB
+        ]);
+
+        $filePath = $request->file('file')->store('materials', 'public');
+
+        Material::create([
+            'post_slug' => $request->post_slug,
+            'title' => $request->title,
+            'description' => $request->description,
+            'file_path' => $filePath,
+            'uploaded_by' => auth()->id(),
+        ]);
+
+        return redirect()->route('guru.createMaterial')->with('success', 'Materi berhasil diunggah!');
+    }
+
+    // edit material
+    public function edit($id)
     {
         // Cari material berdasarkan ID
         $material = Material::findOrFail($id);
@@ -37,7 +67,8 @@ class MaterialController extends Controller
         ]);
     }
 
-    public function updateMaterial(Request $request, $id)
+    // update material
+    public function update(Request $request, $id)
     {
         // Validasi data input
         $validated = $request->validate([
@@ -66,6 +97,6 @@ class MaterialController extends Controller
             'file_path' => $filePath,
         ]);
 
-        return redirect()->route('guru.kelas', $material->id)->with('success', 'Materi berhasil diperbarui!');
+        return redirect()->route('materials.edit', $material->id)->with('success', 'Materi berhasil diperbarui!');
     }
 }

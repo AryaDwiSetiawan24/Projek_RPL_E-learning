@@ -16,25 +16,6 @@ class CategorySeeder extends Seeder
     {
         // membuat categori 'dumy' (data acak)
         // Category::factory(3)->create();
-        
-        // membuat category kelas x,xi,xii
-        // Category::create([
-        //     'name' => 'Kelas X',
-        //     'slug' => 'kelas-x',
-        //     'color' => 'blue'
-        // ]);
-
-        // Category::create([
-        //     'name' => 'Kelas XI',
-        //     'slug' => 'kelas-xi',
-        //     'color' => 'yellow'
-        // ]);
-
-        // Category::create([
-        //     'name' => 'Kelas XII',
-        //     'slug' => 'kelas-xii',
-        //     'color' => 'red'
-        // ]);
 
         // membuat category kelas x,xi,xii
         $categories = [

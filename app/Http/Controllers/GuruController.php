@@ -48,7 +48,7 @@ class GuruController extends Controller
     }
 
     // Form untuk mengunggah materi
-    public function create()
+    public function createMaterial()
     {
         $slugs = Post::pluck('slug', 'id'); // Ambil slug dari tabel posts
 
@@ -61,29 +61,6 @@ class GuruController extends Controller
             });
 
         return view('guru.create', ['title' => 'Unggah Materi', 'posts' => $posts, 'slugs' => $slugs]);
-    }
-
-    // Menyimpan materi ke database
-    public function store(Request $request)
-    {
-        $request->validate([
-            'post_slug' => 'required|exists:posts,slug',
-            'title' => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'file' => 'required|mimes:pdf|max:2048', // Hanya file PDF, maksimal 2MB
-        ]);
-
-        $filePath = $request->file('file')->store('materials', 'public');
-
-        Material::create([
-            'post_slug' => $request->post_slug,
-            'title' => $request->title,
-            'description' => $request->description,
-            'file_path' => $filePath,
-            'uploaded_by' => auth()->id(),
-        ]);
-
-        return redirect()->route('guru.create')->with('success', 'Materi berhasil diunggah!');
     }
 
     // diskusi
